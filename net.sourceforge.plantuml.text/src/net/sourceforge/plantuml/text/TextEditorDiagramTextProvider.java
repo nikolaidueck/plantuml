@@ -75,12 +75,19 @@ public class TextEditorDiagramTextProvider extends AbstractDiagramTextProvider {
 		int start = Math.max(lines.indexOf(startuml), 0), end = Math.min(lines.lastIndexOf(enduml), lines.length());
 		String linePrefix = lines.substring(0, start).trim();
 		StringBuilder result = new StringBuilder(lines.length());
-		while (start < end + enduml.length()) {
+		end += enduml.length();
+		while (start < end) {
 			int lineEnd = lines.indexOf("\n", start);
+			if(lineEnd == -1){ //no line break found == last line
+				lineEnd += end + 1;
+			}
+			
 			if (lineEnd > end) {
 				break;
 			}
+			
 			String line = lines.substring(start, lineEnd).trim();
+			
 			if (line.startsWith(linePrefix)) {
 				line = line.substring(linePrefix.length()).trim();
 			}
