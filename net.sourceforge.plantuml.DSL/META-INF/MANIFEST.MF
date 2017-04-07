@@ -16,11 +16,12 @@ Import-Package: javax.inject;version="1.0.0",
  org.eclipse.ui,
  org.eclipse.ui.plugin,
  org.eclipse.ui.texteditor
-Bundle-ClassPath: lib/DSLTest.jar,
- .
+Bundle-ClassPath: .,
+ lib/DSL.jar
 Export-Package: .,
- MetaModell,
+ metamodell,
  dmd.dsl,
+ generator,
+ parser,
  generator.plantuml,
- net.sourceforge.plantuml.DSL,
- types
+ net.sourceforge.plantuml.DSL

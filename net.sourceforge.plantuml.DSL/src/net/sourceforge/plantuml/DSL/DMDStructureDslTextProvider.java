@@ -14,6 +14,7 @@ import org.eclipse.ui.texteditor.ITextEditor;
 
 import dmd.dsl.DSL;
 import dmd.dsl.DSLException;
+import generator.plantuml.PlantUmlGenerator;
 import net.sourceforge.plantuml.text.AbstractDiagramTextProvider;
 
 public class DMDStructureDslTextProvider extends AbstractDiagramTextProvider {
@@ -39,7 +40,8 @@ public class DMDStructureDslTextProvider extends AbstractDiagramTextProvider {
 		try {
 			result = dsl.generatePlantUml(file.getRawLocation().makeAbsolute().toFile());
 		} catch (DSLException e) {
-			logger.log(Level.SEVERE, "Fehler beim generieren von PlantUml", e);
+//			logger.log(Level.SEVERE, "Fehler beim generieren von PlantUml", e);
+			return "";
 		}
 		return (result.length() > 0 ? result : null);
 	}
